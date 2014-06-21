@@ -13,13 +13,18 @@ class CalculationsController < ApplicationController
       randomNumberMystery = 1 + rand(10)      
       symbolChance = 1 + rand(100)
       
-      if (symbolChance < 50)
+      if (symbolChance < 40)
         symbol = "-"
         randomResult = (randomNumber1 * randomNumberMystery) - randomNumber2
-      end
-      else if (symbolChance > 50)
+      elsif (symbolChance > 40 && symbolChance < 80)
         symbol = "+"
         randomResult = (randomNumber1 * randomNumberMystery) + randomNumber2
+      elsif (symbolChance > 80 && symbolChance < 90)
+        symbol = "*"
+        randomResult = (randomNumber1 * randomNumberMystery) * randomNumber2
+      elsif (symbolChance > 90 && symbolChance < 100)
+        symbol = "/"
+        randomResult = (randomNumber1 * randomNumberMystery) / randomNumber2
       end
       
       @result = randomResult
