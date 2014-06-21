@@ -7,6 +7,11 @@
    		<br>
 		<div class = "sum">
    			<span id="sum"></span>
-		</div>
-		<% end %>
+			<% if @sum == @missing %>
+				<div class="great">!</div>
+			<% else %>
+				<div></div>
+			<% end %>
+			<%= @correct %>	
+		<% end %>			
 </div>
