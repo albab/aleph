@@ -16,7 +16,6 @@
 .bubble {
 	background-color: white;
 	width: 20%;
-	padding-top: 25%;
     	margin: 0 auto;
 }
 
@@ -24,4 +23,18 @@
 	font-size: 100px;
 	padding-top: 20%;
     	padding-left: 40px;
+}
+
+
+.expressionText {
+	width: 500px;
+	font-size: 80px;
+	padding-bottom: 50px;
+	padding-top: 19%;
+	margin: 0 auto;
+}
+
+
+.HEY {
+	text-color: green;
 }

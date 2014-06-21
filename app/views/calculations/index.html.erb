@@ -1,12 +1,12 @@
-
+<div class="expressionText"><%= @expression %></div>
 <div class="bubble">
-	<span id="expression"></span>
-	<%= form_tag calculations_path, :method => :post, :remote => true do %>
+	
+		<%= form_tag calculations_path, :method => :post, :remote => true do %>
 		<%= text_field_tag :data, nil, :onkeyup => "this.form.sub.click()" %> 
   		<%= submit_tag "submit", :name => "sub", class: 'btn btn-success' %>
    		<br>
 		<div class = "sum">
    			<span id="sum"></span>
 		</div>
-	<% end %>
+		<% end %>
 </div>
