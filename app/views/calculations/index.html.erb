@@ -1,12 +1,12 @@
 
 <div class="bubble">
-
-<%= form_tag calculations_path, :method => :post, :remote => true do %>
-	<%= text_field_tag :data, nil, :onkeyup => "this.form.sub.click()" %> 
-  	<%= submit_tag "submit", :name => "sub" %>
-   	<br>
-   	= <span id="sum"></span>
-<% end %>
-
-
+	<span id="expression"></span>
+	<%= form_tag calculations_path, :method => :post, :remote => true do %>
+		<%= text_field_tag :data, nil, :onkeyup => "this.form.sub.click()" %> 
+  		<%= submit_tag "submit", :name => "sub", class: 'btn btn-success' %>
+   		<br>
+		<div class = "sum">
+   			<span id="sum"></span>
+		</div>
+	<% end %>
 </div>
