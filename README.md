@@ -1,3 +1,3 @@
 aleph
 ========
-Math questions using Rails and JS (AJAX)
+Math questions using Rails and JS
