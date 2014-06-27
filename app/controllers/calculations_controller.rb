@@ -4,7 +4,6 @@ class CalculationsController < ApplicationController
     end
   
     def index
-      @correct = false
       alphabet = ("a".."z").to_a
       randomLetter1 = alphabet.shuffle.sample
       
@@ -31,9 +30,5 @@ class CalculationsController < ApplicationController
       @missing = randomNumberMystery.to_s
       
       @expression = randomNumber1.to_s + randomLetter1 + " " + symbol + " " + randomNumber2.to_s + " " + "=" + " " + randomResult.to_s
-      
-      if @sum == @missing
-        @correct = true
-      end
     end
 end

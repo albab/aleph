@@ -7,11 +7,12 @@
    		<br>
 		<div class = "sum">
    			<span id="sum"></span>
-			<% if @sum == @missing %>
+			<% if @correct %>
 				<div class="great">!</div>
 			<% else %>
-				<div></div>
 			<% end %>
-			<%= @correct %>	
-		<% end %>			
+			<%= @missing %>
+			<%= @correct %>
+		<% end %>				
+			
 </div>
