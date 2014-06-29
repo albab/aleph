@@ -1,6 +1,6 @@
 class CalculationsController < ApplicationController
     def create
-      @sum = eval(params[:data])     
+      @sum = calculation_params     
     end
   
     def index
@@ -31,4 +31,13 @@ class CalculationsController < ApplicationController
       
       @expression = randomNumber1.to_s + randomLetter1 + " " + symbol + " " + randomNumber2.to_s + " " + "=" + " " + randomResult.to_s
     end
+    
+    private
+    
+    def calculation_params
+      params.require(:calculation).permit(:answer)
+    end
+    
+    
+    
 end

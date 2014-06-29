@@ -1,18 +1,14 @@
 <div class="expressionText"><%= @expression %></div>
 <div class="bubble">
 	
-		<%= form_tag calculations_path, :method => :post, :remote => true do %>
-		<%= text_field_tag :data, nil, :onkeyup => "this.form.sub.click()" %> 
-  		<%= submit_tag "submit", :name => "sub", class: 'btn btn-success' %>
-   		<br>
-		<div class = "sum">
-   			<span id="sum"></span>
-			<% if @correct %>
-				<div class="great">!</div>
-			<% else %>
-			<% end %>
-			<%= @missing %>
-			<%= @correct %>
-		<% end %>				
+
+<%= form_for :calculation, url: calculations_path do |f| %>  <p>
+	    <%= f.label :answer %><br>
+	    <%= f.text_field :answer %>
+	  </p>
+	  <p>
+	  <%= f.submit %>
+<% end %>
+				
 			
 </div>
