@@ -1,0 +1,8 @@
+<div class="expressionText text-center"><%= @expression %></div>
+<div class="bubble text-center">
+	<%= form_for :calculation, url: calculations_path, remote: true do |f| %>
+    <%= f.text_field :answer, placeholder: 'Think you can solve it?', class: 'form-control' %>
+	  <%= f.submit 'Submit Answer', class:'btn btn-success'%>
+	<% end %>
+</div>
+

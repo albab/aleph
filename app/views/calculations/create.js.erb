@@ -1,2 +1,10 @@
-document.getElementById("sum").innerHTML = <%= @sum %>
-
+var response = <%= @correct %>;
+if (response == true) {
+	$('.form').html("<%= j render 'form' %>")
+	$('.response').html('<i class="fa fa-check" aria-hidden="true"></i>');
+	$('.response').removeClass('fail').addClass('success');
+	$('i').fadeOut(1500);
+} else if (response == false) {
+	$('.response').html('<i class="fa fa-times" aria-hidden="true"></i>');
+	$('.response').removeClass('success').addClass('fail');
+}

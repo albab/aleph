@@ -1,14 +1,6 @@
-<div class="expressionText"><%= @expression %></div>
-<div class="bubble">
-	
-
-<%= form_for :calculation, url: calculations_path do |f| %>  <p>
-	    <%= f.label :answer %><br>
-	    <%= f.text_field :answer %>
-	  </p>
-	  <p>
-	  <%= f.submit %>
-<% end %>
-				
-			
+<div class="response text-center"></div>
+<div id="form_and_stuff text-center">
+	<div class="form">
+		<%= render 'form' %>
+	</div>
 </div>

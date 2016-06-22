@@ -1,43 +1,39 @@
 class CalculationsController < ApplicationController
+    include ExpressionHelper
     def create
-      @sum = calculation_params     
-    end
-  
-    def index
-      alphabet = ("a".."z").to_a
-      randomLetter1 = alphabet.shuffle.sample
-      
-      randomNumber1 = 1 + rand(10)
-      randomNumber2 = 1 + rand(10)     
-      randomNumberMystery = 1 + rand(10)      
-      symbolChance = 1 + rand(100)
-      
-      if (symbolChance < 40)
-        symbol = "-"
-        randomResult = (randomNumber1 * randomNumberMystery) - randomNumber2
-      elsif (symbolChance > 40 && symbolChance < 80)
-        symbol = "+"
-        randomResult = (randomNumber1 * randomNumberMystery) + randomNumber2
-      elsif (symbolChance > 80 && symbolChance < 90)
-        symbol = "*"
-        randomResult = (randomNumber1 * randomNumberMystery) * randomNumber2
-      elsif (symbolChance > 90 && symbolChance < 100)
-        symbol = "/"
-        randomResult = (randomNumber1 * randomNumberMystery) / randomNumber2
+      @sum = calculation_params
+      if @sum[:answer] == session[:missing]
+        @correct = true
+        response = ExpressionHelper.random_exp
+        if response.include? nil
+          response = ExpressionHelper.random_exp
+        end
+        @result = response[0]
+        @missing = response[1]
+        @expression = response[2]
+        session[:missing] = @missing
+      else
+        @correct = false
+        @result = session[:result]
+        @missing = session[:missing]
+        @expression = session[:expression]
       end
-      
-      @result = randomResult
-      @missing = randomNumberMystery.to_s
-      
-      @expression = randomNumber1.to_s + randomLetter1 + " " + symbol + " " + randomNumber2.to_s + " " + "=" + " " + randomResult.to_s
     end
-    
+    def index
+      response = ExpressionHelper.random_exp
+      if response.include? nil
+        response = ExpressionHelper.random_exp
+      end
+      @result = response[0]
+      @missing = response[1]
+      @expression = response[2]
+      session[:ugh] = response
+      session[:missing] = @missing
+      session[:expression] = @expression
+      session[:result] = @result
+    end
     private
-    
-    def calculation_params
-      params.require(:calculation).permit(:answer)
-    end
-    
-    
-    
+      def calculation_params
+        params.require(:calculation).permit(:answer)
+      end
 end
